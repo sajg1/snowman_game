@@ -1,6 +1,6 @@
 require('minitest/autorun')
 require('minitest/rg')
-require_relative('../Player')
+require_relative('../player')
 
 class TestPlayer < MiniTest::Test
   def test_player_has_name
