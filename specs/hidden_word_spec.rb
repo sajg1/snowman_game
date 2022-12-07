@@ -17,4 +17,14 @@ class TestHiddenWord < MiniTest::Test
     assert_equal("h*ll*", word.reveal(["h","l"]))
     assert_equal("*e**o", word.reveal(["o","e", "p", "s", "i"]))
   end
+
+  def test_right_letter_can_return_true
+    word = HiddenWord.new("hello")
+    assert_equal(true, word.has_letter("h"))
+  end
+
+  def test_wrong_letter_returns_false
+    word = HiddenWord.new("hello")
+    assert_equal(false, word.has_letter("q"))
+  end
 end

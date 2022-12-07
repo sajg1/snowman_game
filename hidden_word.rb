@@ -29,4 +29,12 @@ class HiddenWord
     return @hidden
   end
 
+  def has_letter(letter)
+    if @word[letter]
+      return true
+    else
+      return false
+    end
+  end
+
 end
