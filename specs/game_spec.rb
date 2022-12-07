@@ -23,7 +23,16 @@ class TestGame < MiniTest::Test
     player1 = Player.new("Steve")
     word = HiddenWord.new("hippo")
     game = Game.new(player1, word)
-    game.add_guess("h")
+    game.check_guess("h")
     assert_equal(["h"], game.guessed_letters)
+  end
+
+  def test_can_check_guess_against_hidden_word
+    player1 = Player.new("Steve")
+    word = HiddenWord.new("hippo")
+    game = Game.new(player1, word)
+    game.check_guess("q")
+    assert_equal(["q"], game.guessed_letters)
+    assert_equal(5, game.player.lives)
   end
 end

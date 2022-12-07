@@ -12,4 +12,11 @@ class TestPlayer < MiniTest::Test
     player1 = Player.new("Stephen")
     assert_equal(6, player1.lives)
   end
+
+  def test_a_player_can_lose_life
+    player1 = Player.new("Stephen")
+    assert_equal(6, player1.lives)
+    player1.lives -= 1
+    assert_equal(5, player1.lives)
+  end
 end
