@@ -7,6 +7,9 @@ class Game
   end
 
   def check_guess(letter)
+    if @guessed_letters.include? letter
+      return
+    end
     @guessed_letters.append(letter)
     if @word.has_letter(letter) == false
       @player.lives -= 1

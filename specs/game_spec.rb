@@ -35,4 +35,18 @@ class TestGame < MiniTest::Test
     assert_equal(["q"], game.guessed_letters)
     assert_equal(5, game.player.lives)
   end
+
+  def test_if_game_won
+    player1 = Player.new("Steve")
+    word = HiddenWord.new("hippo")
+    game = Game.new(player1, word)
+    game.check_guess("q")
+    game.check_guess("z")
+    game.check_guess("e")
+    game.check_guess("y")
+    game.check_guess("l")
+    game.check_guess("r")
+    assert_equal(0, game.player.lives)
+
+  end
 end
