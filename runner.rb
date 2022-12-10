@@ -15,25 +15,28 @@ class Runner
   game = Game.new(player, hidden_word)
   puts "Welcome to the Snowman Game #{name}!"
   winner = false
+  num = 6
   while game.player.lives > 0 && winner == false
+    puts Snowman.lives[num-1]
     puts "Guess the secret word before your #{game.player.lives.to_s} lives run out."
     p game.word.reveal(game.guessed_letters)
     puts "Your guesses so far #{game.guessed_letters}"
     puts "Please guess a letter:"
     letter = gets.chomp
     game.check_guess(letter)
+    num = game.player.lives
     system("clear")
     puts "#{name}'s Snowman Game"
     winner = game.is_won
   end
   system("clear")
-  puts "The Snowman Game"
-  puts "The secret word was #{secret_word}"
+  puts "#{name}'s Snowman Game"
   if winner == true
     puts "Well done, you won!"
   else
-    puts "Better luck next time!"
+    puts "The Snowman melted! Better luck next time."
   end
+  puts "The word was #{secret_word}"
 end
 
 runner = Runner.new()
