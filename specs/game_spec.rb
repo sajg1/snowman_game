@@ -36,7 +36,7 @@ class TestGame < MiniTest::Test
     assert_equal(5, game.player.lives)
   end
 
-  def test_if_game_won
+  def test_if_game_lost_due_to_loss_of_all_lives
     player1 = Player.new("Steve")
     word = HiddenWord.new("hippo")
     game = Game.new(player1, word)
@@ -47,6 +47,29 @@ class TestGame < MiniTest::Test
     game.check_guess("l")
     game.check_guess("r")
     assert_equal(0, game.player.lives)
+    assert_equal(false, game.is_won)
+  end
 
+  def test_game_not_won_due_to_asterix_in_word
+    player1 = Player.new("Steve")
+    word = HiddenWord.new("hippo")
+    game = Game.new(player1, word)
+    game.check_guess("h")
+    game.check_guess("p")
+    game.check_guess("o")
+    game.check_guess("q")
+    assert_equal(false, game.is_won)
+  end
+
+  def test_game_is_won
+    player1 = Player.new("Steve")
+    word = HiddenWord.new("hippo")
+    game = Game.new(player1, word)
+    game.check_guess("h")
+    game.check_guess("i")
+    game.check_guess("p")
+    game.check_guess("o")
+    assert_equal("hippo", game.word.hidden)
+    assert_equal(true, game.is_won)
   end
 end

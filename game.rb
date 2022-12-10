@@ -13,6 +13,17 @@ class Game
     @guessed_letters.append(letter)
     if @word.has_letter(letter) == false
       @player.lives -= 1
+    else
+      @word.reveal(@guessed_letters)
     end
   end
+
+  def is_won
+    if @player.lives > 0 && (@word.reveal(@guessed_letters) == @word.word)
+      return true
+    else
+      return false
+    end
+  end
+
 end
