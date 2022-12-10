@@ -1,7 +1,7 @@
 class HiddenWord
   attr_reader :word, :hidden
   def initialize(word)
-    @word = word
+    @word = word.downcase
     @hidden = ""
   end
 
